@@ -115,4 +115,22 @@ However, through the use of the **useState** hook, we can give this functional c
 * provide it an initial value of zero, and,
 * then call the method when the button is clicked
 
-It accomplishes the exact same thing as the  stateful component with a lot less code.
+It accomplishes the exact same thing as the stateful component with a lot less code.
+
+In modern React, functional components using hooks are increasingly being used as a replacement for stateful components. Using hooks enable us to:
+* accomplish the same things and more while using less code
+* avoid the complexities of the **this** keyword
+* eliminate the need to worry about the constructor (See **2. Stateful Class Components** above)
+
+---
+## Summary
+* We use stateless functional components for components that are simple and do not need to change.
+* We use stateful class components for components requiring interactivity.
+* We use hooks to enable stateless functional components to behave like stateful class components, but with a lot less complexity.
+
+---
+Next: **Writing functional component from scratch and learning more about how props work**
+
+----
+
+
