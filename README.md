@@ -267,7 +267,7 @@ As a small additional challenge, try adding a name prop to this component as wel
 Solution:
 * on App.js, pass in a name prop with the value of "Joy", ie,  `name="Joy"`
 * on StatefulGreeting.js, add the name prop and don't forget to refer to the new prop by using the *this* keyword, ie":
-`return <h1>Hello, {this.name.props} {this.props.greeting}</h1>`
+`return <h1>Hello, {this.props.name} {this.props.greeting}</h1>`
 
 ---
 Next: **Why use Stateful Class Component? What is State?**
