@@ -273,3 +273,58 @@ Solution:
 Next: **Why use Stateful Class Component? What is State?**
 
 ---
+**Quick Review:** How to duplicate the functionality of a stateless functional component using stateful class component
+![duplicate the functionality of a stateless functional component using stateful class component](./documentation/duplicate-functionality-of-functional-component-using-astateful-class-component.png)
+
+
+---
+## Class Components > What is 'State'?
+
+First, recall that Stateful Class Components:
+* have the ability to maintain their internal state which is a private, internal set of properties that:
+    * describe what they display
+    * and how they behave
+<br/>
+
+*Class components are able to change and update themselves at will or in response to user actions.*
+
+### Adding State to your components
+
+❗**constructor**:
+* a special method that is always called when the class is first instantiated
+* while *state* can be defined elsewhere, the *constructor* is where state is usually defined in class components
+* to define the *state* in the constructor, we can simply define *this.state* and set it equal to an empty object, `{}`
+* this means that as soon as this class is instantiated, it will automatically have a property called *state* which we can access and manipulate, as required.
+* inside the constructor, the very first thing we must always do is to call the *super()* function
+* this ensures that the constructor for the parent class, ie, React.Component, is also called
+* it is also best practice to pass *props* to both the **constructor* method and the *super* function
+
+
+    * in StatefulGreeting.js file:
+    ```javascript
+    import React from "react";
+
+    class StatefulGreeting extends React.Component {
+
+        constructor(props) {
+            super(props);
+            this.state = {};
+        }
+
+        render() {
+            return <h1>Hello, {this.props.name}! {this.props.greeting}</h1>
+        }
+    }
+
+    export default StatefulGreeting;
+    ```
+
+### ❗LEARNED STEPS SO FAR:
+1. In your class component file, first *import React*
+2. Instantiate *class*
+3. Call the *constructor* method
+4. Inside the *constructor*, call the *super* function
+5. Below the *super* function, define the *state* in the constructor using the *this* keyword and set it to an empty object
+6. It is best practice to pass *props* to both the *contructor* method and the *super* function
+
+### Updating the State in response to user interactions
