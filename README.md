@@ -273,19 +273,6 @@ const FunctionalGreetingWithProps = (props) => {
 [**Finished Source Code Repo**](https://github.com/Code-Institute-Solutions/gitpod-react/tree/b7e7da047b80911501e57d6dfb9ae090ad4c5dee/my-app/src)
 
 ---
-## Project Brief
-
-### Project Description
-As part of your React journey, you've been hired by a client to develop a frontend portfolio website using React.
-![React Essentials Mini-Project](./documentation/project-brief.png)
-
-**Learning Objectives**
-1. Create a *Navigation Menu*
-2. Create a *User Sign In form* displaying different content based on user interactions
-3. Create an *API-Loaded Image List* complete with title, author and description text
-4. Create an *Interactive Search Field*
-
----
 ## Introduction to Functional Components
 **Project objective 1:** use React to build a simple side bar containing 3 anchor elements to other pages.
 ![project's anchor elements](./documentation/anchor-elems.png)
