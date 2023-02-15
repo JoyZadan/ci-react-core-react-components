@@ -175,3 +175,101 @@ In this section, you will need to use React to build an **Interactive Navbar** c
 3. How to change a component's *State*
 
 ---
+### Component Types
+**Terminologies to remember**
+* Stateless or Functional Components
+* Stateful or Class Components
+
+TABLE: Differences between Stateless Functional Components and Stateful Class Components
+![Differences between Stateless Functional Components and Stateful Class Components](./documentation/component-types.png)
+<br/>
+
+❗ **StatefulGreeting.js** file: Extending the built-in Component class from React: <br/>
+*OPTION ONE:*
+```javascript
+import React from "react";
+
+// To turn this into a React component, we must extend the built-in Component class
+// from React by adding 'extends React.Component' in the class definition
+class StatefulGreeting extends React.Component {
+
+}
+
+export default StatefulGreeting;
+```
+*OPTION TWO:*
+```javascript
+// To turn this into a React component, we must extend the built-in Component class
+// from React by adding importing {Component} directly from React at the top
+// and extend just Component
+import React {Component} from "react";
+
+class StatefulGreeting extends Component {
+    render() {
+        return <h1>Hello from the Stateful Class Component!</h1>
+    }
+}
+
+export default StatefulGreeting;
+```
+
+❗ **REMEMBER: Component names should always be PascalCase so React can tell them apart from regular HTML elements when we include them in our JSX and both React and Component must be capitalized to ensure we extend the class properly.**
+
+NOTE: While functional components can simply return the JSX to be rendered, class components do not have the ability to return anything.
+* We are still on **StatefulGreeting.js file**: all class components must define a render() method which returns the JSX (in this example, we're returning a greeting)
+* Now, on **App.js** file:
+    1. import the StatefulGreeting component
+    2. include it in the top level App div
+    ```javascript
+        return (
+            <StatefulGreeting />
+        )
+    ```
+    3. duplicating the functionality of the FunctionalGreeting <u>with props</u> component
+        * part 1: pass in a greeting prop with a value of *I'm a stateful class component*
+        ```javascript (App.js)
+        import StatefulGreeting from "./components/StatefulGreeting";
+
+        function App() {
+            return (
+                <div className="App">
+                    <!-- without using props -->
+                    <!-- <StatefulGreeting /> -->
+
+                    <!-- with props -->
+                    <StatefulGreeting greeting="I'm a stateful class component" />
+                </div>
+            )
+        }
+
+        export default App;
+        ```
+
+        * part 2a: replace everything after *Hello* with `{props.greeting}`; but a **failed to compile, props is not defined** error will occur, because:
+        * ❗part 2b: in order to access props in a stateful component, we need to refer to them as part of the class by using the **this** keyword by changing `{props.greeting}` to `{this.props.greeting}`
+
+        ```javascript (StatefulGreeting.js)
+        import React from "react";
+
+        class StatefulGreeting extends React.Component {
+            render() {
+                <!-- return <h1>Hello from the stateful class component!</h1> -->
+                return <h1>Hello {this.props.greeting}</h1>
+            }
+        }
+
+        export default StatefulGreeting;
+        ```
+
+**SMALL CHALLENGE:**
+As a small additional challenge, try adding a name prop to this component as well, and rendering it as part of the greeting.
+
+Solution:
+* on App.js, pass in a name prop with the value of "Joy", ie,  `name="Joy"`
+* on StatefulGreeting.js, add the name prop and don't forget to refer to the new prop by using the *this* keyword, ie":
+`return <h1>Hello, {this.name.props} {this.props.greeting}</h1>`
+
+---
+Next: **Why use Stateful Class Component? What is State?**
+
+---
