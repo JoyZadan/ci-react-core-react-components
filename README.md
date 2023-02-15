@@ -157,3 +157,21 @@ To complete this task, you will need to learn more about:
 
 ---
 Next: **Open [First React App](https://github.com/JoyZadan/first-react-app)**
+
+---
+## Introduction to Class Components
+
+**Project Description:**
+In this section, you will need to use React to build an **Interactive Navbar** containing:
+
+1. Sign in Button: Simple Button which changes the value of the welcome message.
+2. Logo Text: e.g. My Gallery
+3. Welcome Message: This message changes value when the users click the button.
+
+![intro to class components project description](./documentation/class-components.png)
+**Learning Objectives**
+1. What is a *Class Component*? When are they used?
+2. How to add *State* to your components?
+3. How to change a component's *State*
+
+---
