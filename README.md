@@ -131,8 +131,148 @@ In modern React, functional components using hooks are increasingly being used a
 ---
 Next: **Writing functional component from scratch and learning more about how props work**
 
-----
+---
+## Writing a Functional Component from scratch
+Note: the App function is actually a functional component in itself
+```javascript
+function App()
+```
 
+### Steps:
+1. Remove everything from App.js except:
+    ```javascript
+    import logo from './logo.svg';
+    import './App.css';
+
+    function App() {
+        return (
+            <div className="App">
+                <h1>Test it works!</h1>
+            </div>
+        );
+    }
+
+    export default App;
+    ```
+2. Inside the **src** folder, create a folder called **components**
+
+3. Inside this new **components** folder, create a file and call it **FunctionalGreeting.js** <br/> <u>(Note the use of PascalCase when naming the file. This is standard for naming React components and is required for our app to render correctly.)</u>
+
+4. Import React from react
+```javascript
+import React from "react";
+```
+
+Note: this line gives us access to everything React itself can do, including calling `react.createElement` which is what JSX will use to create all the HTML elements this component will render.
+
+Also note: This line is actually not required in the latest versions of React. Including this line makes our components backwards compatible with earlier versions of React.
+
+5. Create a new function called FunctionalGreeting:
+```javascript
+function FunctionalGreeting(){
+    return <h1>Hello from React!</h1>
+}
+```
+Note: This is a valid functional component but it won't do anything until we include it in the rest of the application by:
+* exporting the function from FunctionalGreeting.js:
+    ```javascript
+    export default FunctionalGreeting
+    ```
+* importing it where we want to use it, in this case, App.js
+    ```javascript
+    import FunctionalGreeting from "./components/FunctionalGreeting"
+    ```
+    * here we reference the file path where this function exists
+
+❗This process of writing a component, exporting it, and then importing it into your main app file is the basis for how we create user interfaces in React. All your components for different parts of the UI will go into your main **App.js**, and  together they make up the whole user interface.
+
+Note: Components that are totally independent and won't have any other content except what it renders itself do not need a closing tag. We just self-close it with a **space** and a **forward slash**. Most components can be rendered this way.
+`<FunctionalGreeting /> ` <br/>
+In more advanced apps, you'll definitely see components that wrap other components, so to close a component, close it like any other HTML element:
+```javascript
+<FunctionalGreeting>
+    other stuff goes here
+</FunctionalGreeting>
+```
+
+### Using arrow function to keep our code as modern as possible:
+vanilla JS:
+```javascript
+function FunctionalGreeting() {
+    greeting = () => "Hello from React";
+}
+```
+converted to arrow function:
+```javascript
+const FunctionalGreeting = () => <h1>Hello from React!</h1>;
+```
+
+Note on the use of **default** (see line 89) when exporting our component: This is so when we import it, we can  actually do so using any name we want and are not required to import it as **FunctionalGreeting**, though it is convention to do so anyway. There is another alternative called **named exports**,  which we'll learn about as we become more advanced in React development.
+
+---
+### Summary
+* We learned how to create our first stateless functional component from scratch
+* We learned that we can reuse this component over and over simply by expoerting it into the file we wish to use it in.
+
+---
+Next: **Adding props to our stateless functional component**
+
+---
+
+## Adding props to our stateless functional component
+
+**Props** (short for properties)
+* they are specified as attributes to the component (just like you would specify any other HTML attribute such as class or ID)
+* represent the parameters you pass into your React component
+* to tell it what it renders
+* and how
+
+❗**Steps to Duplicating Components:**
+1. Create a duplicate of the functional greeting component
+2. Rename it to FunctionalGreetingWithProps
+3. Inside the file, change the name of the function, and the name of the export to match
+4. Go to App.js, import the FunctionalGreetingWithProps component
+5. Then include it underneath the  regular functional greeting component
+
+❗ **Adding a prop:** <br/>
+1. In **App.js** file, add a prop called *greeting* and set its value to *Nice to meet you!*
+```javascript
+<FunctionalGreetingWithProps greeting="Nice to meet you!"/>
+```
+2. to actually use the new prop, we have to retrieve it in the **FunctionalGreetingWithProps.js** component, see below:
+`(props)`
+
+```javascript
+const FunctionalGreetingWithProps = (props) => {
+    return <h1>Hello! {props.greeting}</h1>;
+}
+
+```
+3. render it as part of the JSX
+`{props.greeting}`
+
+❗<u>Any time  you want to use a prop, a JavaScript variable or any kind of JavaScript expression in your JSX, all you need to do is wrap it in {curly braces}.</u>
+
+![Adding, Retrieving and Rendering Props](./documentation/adding-retrieving-rendering-props.png)
+
+
+**Passing additional props to your component:**
+* In the **App.js** file, separate the additional props using spaces:
+    ```javascript
+    <FunctionalGreetingWithProps greeting="Nice to meet you!" name="Mike" age="32" />
+    ```
+
+* In **FunctionalGreetingWithProps.js** component:
+    ```javascript
+    	const FunctionalGreetingWithProps = (props) => {
+            console.log(props);
+            return <h1>Hello, {props.name}! I see you're {props.age}; {props.greeting}! </h1>;
+        }
+    ```
+
+[**Finished Source Code Repo**](https://github.com/Code-Institute-Solutions/gitpod-react/tree/b7e7da047b80911501e57d6dfb9ae090ad4c5dee/my-app/src)
+
+---
 ## Project Brief
 
 ### Project Description
