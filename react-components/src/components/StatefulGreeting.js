@@ -36,12 +36,22 @@ class StatefulGreeting extends React.Component {
 
   // a constructor is a special method that is always called when the class is first instantiated
   // while state can be defined elsewhere, the constructor is where state is usually defined
-  constructor() {
-
+  constructor(props) {
+    super(props);
+    this.state = {
+      introduction: "Hello!",
+      buttonText: "Exit",
+    };
   }
 
   render() {
-      return <h1>Hello, {this.props.name}. {this.props.greeting}</h1>
+      // return <h1>Hello, {this.props.name}. {this.props.greeting}</h1>
+    return (
+      <div>
+        <h1>{this.state.introduction} {this.props.greeting}</h1>
+        <button>{this.state.buttonText}</button>
+      </div>
+    )
   }
 }
 
